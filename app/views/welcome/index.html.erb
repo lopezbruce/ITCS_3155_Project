@@ -1,5 +1,11 @@
+<head>
+  <meta charset = "utf-8" />
+<style>
+  * {padding: 0; margin: 0; }
+  canvas { background: #eee; display: block; margin: 0 auto; }
+</style>
+</head>
 <body>
-
   <!-- intro area -->
   <div id="intro">
 
@@ -14,7 +20,115 @@
               <h1><a href="index.html">Game</a></h1>
               <!--div class="line-spacer"></div> -->
               <p><span>Awesome Game Coming Soon</span></p>
-              <iframe src="https://giphy.com/embed/F2kI8jlbvGpLW" frameBorder="0" class="giphy-embed"></iframe><p></p>
+              <canvas id = "myCanvas" width = "480" height = "320"></canvas>
+              <!--<iframe src="https://giphy.com/embed/F2kI8jlbvGpLW" frameBorder="0" class="giphy-embed"></iframe><p></p> -->
+              <script>
+                var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var ballRadius = 10;
+var x = canvas.width/2;
+var y = canvas.height-30;
+var dx = 2;
+var dy = -2;
+var paddleHeight = 10;
+var paddleWidth = 75;
+var paddleX = (canvas.width-paddleWidth)/2;
+var rightPressed = false;
+var leftPressed = false;
+var blockWidth = Math.floor(Math.random() * 75) + 20;
+var blockHeight = 20;
+var blockPadding = 5;
+var blockOffsetTop = 10;
+var blockOffsetLeft = 10;
+var blockRowCount = 5
+var blockColumnCount = Math.ceil((canvas.width - blockOffsetLeft)/blockWidth);;
+
+var blocks = [];
+for(c=0; c<blockColumnCount; c++) {
+    blocks[c] = [];
+    for(r=0; r<blockRowCount; r++) {
+        blocks[c][r] = { x: 0, y: 0 };
+    }
+}
+
+function keyDownHandler(k){
+if(k.keyCode == 39)  {
+	rightPressed = true;
+}else if(k.keyCode == 37){
+	leftPressed = true;
+}
+}
+function keyUpHandler(k){
+if(k.keyCode == 39){
+	rightPressed = false;
+}else if(k.keyCode == 37){
+	leftPressed = false;
+}
+}
+function drawPaddle(){
+ctx.beginPath();
+ctx.rect(paddleX, canvas.height-paddleHeight-10, paddleWidth, paddleHeight);
+ctx.fillStyle  = "#0095DD";
+ctx.fill();
+ctx.closePath();
+}
+
+function drawBall(){
+ctx.beginPath();
+ctx.arc(x,y,ballRadius,0, Math.PI*2);
+ctx.fillStyle = "#0095DD";
+ctx.fill();
+ctx.closePath();
+}
+function drawblocks() {
+    for(c=0; c<blockColumnCount; c++) {
+        for(r=0; r<blockRowCount; r++) {
+            var blockX = (c*(blockWidth+blockPadding))+blockOffsetLeft;
+            var blockY = (r*(blockHeight+blockPadding))+blockOffsetTop;
+            blocks[c][r].x = blockX;
+            blocks[c][r].y = blockY;
+            ctx.beginPath();
+            ctx.rect(blockX, blockY, blockWidth, blockHeight);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+}
+		
+
+function draw(){
+ctx.clearRect(0,0, canvas.width, canvas.height);
+drawBall();
+drawPaddle();
+drawblocks();
+if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+    dx = -dx;
+}if(y + dy < ballRadius) {
+    dy = -dy;
+} else if(y + dy > canvas.height-ballRadius-10) {
+    if(x > paddleX && x < paddleX + paddleWidth) {
+        dy = -dy;
+    }
+    else {
+        alert("GAME OVER");
+        document.location.reload();
+    }
+}
+if(rightPressed && paddleX < canvas.width-paddleWidth){
+	paddleX += 7;
+}else if (leftPressed && paddleX > 0){
+	paddleX -= 7;
+}
+x += dx;
+y += dy;
+}
+
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+setInterval(draw,10);
+                
+              </script>
             </div>
           </div>
         </div>
