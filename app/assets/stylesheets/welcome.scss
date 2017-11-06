@@ -12,6 +12,7 @@ Imports
 General
 ================================= */
 body{
+	height: 100%;
 	margin:0;
 	padding:0;
 	text-align: center;
@@ -70,6 +71,12 @@ button {
 	-ms-user-select: none;
 	-o-user-select: none;
 	user-select: none;
+}
+button:hover{
+	transform: scale(1.05, 1.05);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+	
 }
 button.navbar-toggle {
 	background: #2b2b2b;

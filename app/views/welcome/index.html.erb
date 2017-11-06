@@ -20,10 +20,11 @@
               <h1><a href="index.html">Game</a></h1>
               <!--div class="line-spacer"></div> -->
               <p><span>Awesome Game Coming Soon</span></p>
+              <button id="startButton" class= "btn" type="button">START</button>
               <canvas id = "myCanvas" width = "480" height = "320"></canvas>
               <!--<iframe src="https://giphy.com/embed/F2kI8jlbvGpLW" frameBorder="0" class="giphy-embed"></iframe><p></p> -->
               <script>
-                var canvas = document.getElementById("myCanvas");
+var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;
 var x = canvas.width/2;
@@ -52,6 +53,10 @@ for(c=0; c<blockColumnCount; c++) {
     }
 }
 
+function clickHandler(){
+    document.getElementById("startButton").disabled = true;
+    setInterval(draw,10);
+}
 function keyDownHandler(k){
     if(k.keyCode == 39)  {
         rightPressed = true;
@@ -131,13 +136,13 @@ function draw(){
         dx = -dx;
     }if(y + dy < ballRadius) {
         dy = -dy;
-    } else if(y + dy > canvas.height-ballRadius) {
+    } else if(y + dy > canvas.height-ballRadius-10) {
         if(x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
         }
-        else {
-            alert("GAME OVER");
+        else if(y + dy > canvas.height){
             document.location.reload();
+            alert("GAME OVER");
         }
     }
     if(rightPressed && paddleX < canvas.width-paddleWidth){
@@ -151,8 +156,7 @@ function draw(){
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
-setInterval(draw,10);
-                
+document.getElementById("startButton").addEventListener("click", clickHandler,false);
               </script>
             </div>
           </div>
