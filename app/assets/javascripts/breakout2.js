@@ -103,7 +103,8 @@ function blockCollision(){
                     
                 }if(score >= (blockColumnCount * blockRowCount)){
                     alert("YOU WON!");
-                    document.location.reload();
+                    /*document.location.reload();*/
+                    return;
                 }
             }
         }
