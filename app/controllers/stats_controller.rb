@@ -13,13 +13,12 @@ class StatsController < ApplicationController
     
     def edit
         @stat = Stat.find(params[:id])
-        @stat.update(:score => 5, :name => "hello")
     end
     
     def update
         @stat = Stat.find(params[:id])
-        if @article.update(article_params)
-            redirect_to @article
+        if @stat.update(stat_params)
+            redirect_to @stat
         else
             render 'edit'
         end

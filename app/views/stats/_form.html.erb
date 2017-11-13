@@ -1,4 +1,17 @@
 <%= form_for @stat do |f| %>
-f.update(:score => 6, :name => "hello")
+
+<p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :score %><br>
+    <%= f.number_field :score %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
  
 <% end %>
