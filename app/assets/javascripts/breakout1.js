@@ -95,8 +95,7 @@
                         score++;
                     }if(score >= (blockColumnCount * blockRowCount)){
                         alert("YOU WON!");
-                        /*document.location.reload();*/
-                        return;
+                        document.location.reload();
                     }
                 }
             }

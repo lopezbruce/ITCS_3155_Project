@@ -1,3 +1,24 @@
- <% @stats.each do |stat| %>
-     <%= stat.score %>
+ <table>
+  <tr>
+    <th>Score</th>
+    <th>Game</th>
+  </tr>
+ 
+  <% @stats.each do |stat| %>
+  <% stat.update(:score => 56) %>
+  <tr>
+     <td><%= stat.score %></td>
+     <td><%= stat.name %></td>
+     
+     <td><%= link_to 'Show', stat_path(stat) %></td>
+     <td><%= link_to 'Edit', edit_stat_path(stat) %></td>
+    </tr>
  <% end %>
+</table>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
