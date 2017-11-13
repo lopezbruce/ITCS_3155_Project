@@ -1,5 +1,6 @@
 <head>
   <meta charset = "utf-8" />
+  <link rel="stylesheet" type="text/css" href="app/assets/stylesheets/welcome.scss">
 <style>
   * {padding: 0; margin: 0; }
 </style>
@@ -7,7 +8,9 @@
 <body>
   <!-- intro area -->
   <div id="intro">
-
+    <div style="float:right" >
+      <button>SIGN IN</button>
+    </div>
     <div class="intro-text">
       <div class="container">
         <div class="row">
@@ -19,9 +22,7 @@
               <h1><a href="index.html.erb">Game</a></h1>
               <!--div class="line-spacer"></div> -->
               <p><span>Awesome Game Coming Soon</span></p>
-              <button id="startButton" class= "btn" type="button">START</button>
-              <canvas id = "myCanvas" width = "480" height = "320"></canvas>
-              <%= javascript_include_tag 'breakout3.js' %>
+              <%= link_to 'Game', "/game.html" %>
             </div>
           </div>
         </div>
