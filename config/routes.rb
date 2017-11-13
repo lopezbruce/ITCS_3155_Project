@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   resources :stats
   
-  get '/game', :to => redirect('/game.html')
+  get 'layouts/game' => 'welcome#game'
 
   
   root 'welcome#index'
