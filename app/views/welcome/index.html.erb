@@ -1,9 +1,9 @@
 <head>
   <meta charset = "utf-8" />
-  <link rel="stylesheet" type="text/css" href="app/assets/stylesheets/welcome.scss">
-<style>
-  * {padding: 0; margin: 0; }
-</style>
+  <style>
+  .signin {text-align: center; background-color: #4CAF50;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="assets/stylesheets/welcome.css">
 </head>
 <body>
   <!-- intro area -->
@@ -30,4 +30,13 @@
     </div>
 
   </div>
+  
+  # added these lines.
+<% if current_user %>
+  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+<% else %>
+  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+<% end %>
+
+<%= yield %>
 </body>
