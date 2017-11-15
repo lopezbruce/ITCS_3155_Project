@@ -11,9 +11,15 @@
      
      <td><%= link_to 'Show', stat_path(stat) %></td>
      <td><%= link_to 'Edit', edit_stat_path(stat) %></td>
+     <td><%= link_to 'Destroy',
+                                stat_path(stat),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' } %></td>
+     
     </tr>
  <% end %>
 </table>
+<%= link_to 'New', new_stat_path %>
  
  
  

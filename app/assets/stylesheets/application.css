@@ -136,6 +136,14 @@ margin, padding
 	margin-top: 40px;
 }
 
+#signin{
+	margin: 10px;
+	float: right;
+	padding: 6px, 12px;
+	background-color: #559aba;
+	border: white;
+}
+
 
 
 /* ================================

@@ -1,9 +1,9 @@
 <head>
   <meta charset = "utf-8" />
   <style>
-  .signin {text-align: center; background-color: #4CAF50;}
+  * {padding: 0; margin: 0; }
   </style>
-  <link rel="stylesheet" type="text/css" href="assets/stylesheets/welcome.css">
+  <link rel="stylesheet" type="text/css" href="app/assets/stylesheets/application.css">
 </head>
 <body>
   <!-- intro area -->
@@ -22,7 +22,7 @@
               <h1><a href="index.html.erb">Game</a></h1>
               <!--div class="line-spacer"></div> -->
               <p><span>Awesome Game Coming Soon</span></p>
-              <%= link_to 'Game', "/game.html" %>
+              <%= button_to 'GAME', games_path, :method => 'get' %>
             </div>
           </div>
         </div>
@@ -30,13 +30,4 @@
     </div>
 
   </div>
-  
-  # added these lines.
-<% if current_user %>
-  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
-<% else %>
-  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
-<% end %>
-
-<%= yield %>
 </body>

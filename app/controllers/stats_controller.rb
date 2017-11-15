@@ -1,10 +1,19 @@
 class StatsController < ApplicationController
+    def new
+        @stat=Stat.new
+    end
+    
     def index
         @stats=Stat.all
     end
     
     def create
         @stat = Stat.new(stat_params)
+        if @stat.save
+            redirect_to @stat
+        else
+            render 'new'
+        end
     end
     
     def show
@@ -22,6 +31,12 @@ class StatsController < ApplicationController
         else
             render 'edit'
         end
+    end
+    
+    def destroy
+        @stat = Stat.find(params[:id])
+        @stat.destroy
+        redirect_to stats_path
     end
 =begin
 

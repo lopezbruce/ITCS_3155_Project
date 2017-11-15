@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
+  resources :games
   get 'welcome/index'
   resources :stats
   
- get 'layout/game'
-  
-  get '/views/layouts/game' => 'welcome#game'
 
   
   root 'welcome#index'
