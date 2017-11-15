@@ -141,9 +141,17 @@ margin, padding
 	float: right;
 	padding: 6px, 12px;
 	background-color: #559aba;
-	border: white;
+	border-color: white;
+	color: white;
 }
 
+#gameButton{
+	margin: 10px;
+	padding: 6px, 12px;
+	background-color: #559aba;
+	border-color: white;
+	color: white;
+}
 
 
 /* ================================

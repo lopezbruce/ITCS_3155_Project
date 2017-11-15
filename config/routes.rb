@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user/index'
+
   resources :games
   get 'welcome/index'
   resources :stats

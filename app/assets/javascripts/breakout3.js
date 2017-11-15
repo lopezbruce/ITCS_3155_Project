@@ -94,11 +94,14 @@ function blockCollision(){
                     brick.health -= 33;
                     if(brick.health <= 100 && brick.health > 66 ){
                         brick.color = "#dd0024";
+                        break;
                     }else if(brick.health <= 66 && brick.health > 33){
                         brick.color = "#00bc16";
+                        break;
                     }else{ 
                         brick.active = 0;
                         score++;
+                        break;
                     } 
                     
                 }if(score >= (blockColumnCount * blockRowCount)){
