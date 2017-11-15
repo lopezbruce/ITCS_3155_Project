@@ -36,7 +36,7 @@ for(c=0; c<blockColumnCount; c++) {
 function clickHandler(){
     document.getElementById("startButton").disabled = true;
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    setInterval(draw,10);
+    setInterval(draw,8);
 }
 function keyDownHandler(k){
     if(k.keyCode == 39)  {
