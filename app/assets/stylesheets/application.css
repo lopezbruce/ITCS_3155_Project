@@ -38,6 +38,11 @@ body{
 	
 }
 
+title{
+	margin-top: 10px;
+	padding-top: 10px;
+}
+
 h1 {
 	font-size: 36px;
 }
@@ -155,7 +160,7 @@ margin, padding
     background-color: white;
 }
 
-#gameButton{
+#gameButton, #startButton{
 	margin: 10px;
 	padding: 6px, 12px;
 	background-color: transparent;
@@ -179,7 +184,7 @@ margin, padding
 	user-select: none;
 }
 
-#gameButton:hover{
+#gameButton:hover, #startButton:hover{
 	transform: scale(1.05, 1.05);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     cursor: pointer;
