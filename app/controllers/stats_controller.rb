@@ -6,7 +6,7 @@ class StatsController < ApplicationController
     def index
         @stats=Stat.all
     end
-    
+
     def create
         @stat = Stat.new(stat_params)
         if @stat.save
@@ -15,6 +15,8 @@ class StatsController < ApplicationController
             render 'new'
         end
     end
+
+
     
     def show
         @stat=Stat.find(params[:id])

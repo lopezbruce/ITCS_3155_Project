@@ -1,3 +1,23 @@
-<% @user.stats.each do |stat| %>
-    stat.show
+<h1>Show User</h1>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+  <strong>Password:</strong>
+  <%= @user.password %>
+</p>
+
+<h2>Add a stat:</h2>
+<%= form_for([@user, @user.stats.build]) do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :score %><br>
+    <%= f.number_field :score %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>
