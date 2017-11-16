@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
   resources :games
   get 'welcome/index'
-  resources :stats
-  resources :users
+  resources :users do
+    resources :stats
+  end
   
   
 

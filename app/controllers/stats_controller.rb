@@ -6,7 +6,7 @@ class StatsController < ApplicationController
     def index
         @stats=Stat.all
     end
-
+=begin
     def create
         @stat = Stat.new(stat_params)
         if @stat.save
@@ -15,9 +15,13 @@ class StatsController < ApplicationController
             render 'new'
         end
     end
+=end
 
-
-    
+    def create
+        @user = User.find(params[:user_id])
+        @stat=@user.stats.create(stat_params)
+        redirect_to user_path(@user)
+    end
     def show
         @stat=Stat.find(params[:id])
     end

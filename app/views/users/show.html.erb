@@ -7,8 +7,17 @@
   <%= @user.password %>
 </p>
 
+<% @user.stats.each do |stat| %>
+<p>
+  <strong>Score:</strong>
+  <%= stat.score %>
+  <strong>Name:</strong>
+  <%= stat.name %>
+</p>
+<% end %>
+
 <h2>Add a stat:</h2>
-<%= form_for([@user, @user.stats.build]) do |f| %>
+<%= form_for([@user, @user.stats.new]) do |f| %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
