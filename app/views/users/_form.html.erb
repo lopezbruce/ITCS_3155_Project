@@ -1,10 +1,32 @@
+<% if false %>
+<%= form_for @user do |f| %>
+
+<p>
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </p>
+ 
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>
+<% end %>
+<!-- everything above is just to test that the model will create and edit properly -->
+
+
 <!-- app/views/users/new.html.erb -->
 
 <h1>Signup!</h1>
 
-<%= form_for :user, url: '/users' do |f| %>
+<%= form_for :user, url: '/users' do |f| %> 
 
-  Name: <%= f.text_field :name %>
+  Name: <%= f.text_field :username %>
   Email: <%= f.text_field :email %>
   Password: <%= f.password_field :password %>
   Password Confirmation: <%= f.password_field :password_confirmation %>
@@ -23,3 +45,4 @@
   <%= submit_tag "Submit" %>
 
 <% end %>
+

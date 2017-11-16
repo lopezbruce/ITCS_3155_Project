@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
 # app/controllers/users_controller.rb
 
@@ -28,12 +28,13 @@ def edit
   @user=User.find(params[:id])
 end
 
-def upadte
-@user=User.find(params[:id])
-if @user.update(user_params)
-  redirect_to @user
-else
-  render 'edit'
+def update
+  @user=User.find(params[:id])
+  if @user.update(user_params)
+    redirect_to '/'
+  else
+    render 'edit'
+  end
 end
 
 def destroy
@@ -45,7 +46,7 @@ end
 private
 
 def user_params
-  params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  params.require(:user).permit(:username, :email, :password, :password_confirmation)
 end
 
 end
