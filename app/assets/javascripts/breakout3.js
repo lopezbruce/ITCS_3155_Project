@@ -36,7 +36,7 @@ for(c=0; c<blockColumnCount; c++) {
 function clickHandler(){
     document.getElementById("startButton").disabled = true;
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    setInterval(draw,8);
+    setInterval(draw,9);
 }
 function keyDownHandler(k){
     if(k.keyCode == 39)  {
@@ -98,11 +98,13 @@ function blockCollision(){
                     }else if(brick.health <= 66 && brick.health > 33){
                         brick.color = "#00bc16";
                         break;
-                    }else{ 
+                    }else if (brick.health <= 33){ 
                         brick.active = 0;
                         score++;
                         break;
-                    } 
+                    }else{
+                        break;
+                    }
                     
                 }if(score >= (blockColumnCount * blockRowCount)){
                     alert("YOU WON!");
@@ -131,12 +133,13 @@ function draw(){
     }if(y + dy < ballRadius) {
         dy = -dy;
     } else if(y + dy > canvas.height-ballRadius-10) {
-        if(x > paddleX && x < paddleX + paddleWidth) {
+        if(x > paddleX && x < paddleX + paddleWidth && !(y + dy > canvas.height - 10)) {
             dy = -dy;
         }
         else if(y + dy > canvas.height){
             document.location.reload();
             alert("GAME OVER");
+            alert("Score: " + score.toString());
             
         }
     }
@@ -151,4 +154,9 @@ function draw(){
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+
+
+
+
+
 document.getElementById("startButton").addEventListener("click", clickHandler,false);

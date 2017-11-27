@@ -4,7 +4,7 @@
     <style>
         * {padding: 0; margin: 0; }
     </style>
-    <%= stylesheet_link_tag "/app/assets/stylesheets/application.css" %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
 
    <!-- <link rel="stylesheet" type="text/css" href="/app/assets/stylesheets/welcome.css"> -->
 </head>
@@ -19,7 +19,7 @@
             <div class="brand">
                 <h1>Breakout!</h1>
                 <button id ="startButton" class = "btn" type = "button">START</button>
-                <canvas id= "myCanvas" width = "960" height = "640"></canvas>
+                <canvas id= "myCanvas" width = "480" height = "320"></canvas>
                 <%= javascript_include_tag 'breakout3.js' %>
             </div>
           </div>

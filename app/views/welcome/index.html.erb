@@ -8,6 +8,11 @@
 <body>
   <!-- intro area -->
   <div id="intro">
+    <div style="float:center">
+      <h1>
+        Welcome to © Games!
+      </h1>
+    </div>
     <div style="float:right" >
       <%= button_to 'Sign in', '/login', :method => 'get', :id => 'signin' %>
     </div>
@@ -19,9 +24,7 @@
           <div class="col-md-12">
 
             <div class="brand">
-              <h1>Game</a></h1>
               <!--div class="line-spacer"></div> -->
-              <p><span>Awesome Game Coming Soon</span></p>
               <%= button_to 'GAME', games_path, :method => 'get', :id => 'gameButton' %>
             </div>
           </div>

@@ -1,14 +1,15 @@
+
 <% if false %>
 <%= form_for @user do |f| %>
 
 <p>
     <%= f.label :username %><br>
-    <%= f.text_field :username %>
+    <%= f.text_field :username, class: 'username' %>
   </p>
  
   <p>
     <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: 'password' %>
   </p>
  
   <p>
