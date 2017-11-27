@@ -46,6 +46,8 @@ title{
 }
 
 h1 {
+	margin-top: 10px;
+	padding-top: 10px;
 	font-size: 36px;
 }
 h2 {

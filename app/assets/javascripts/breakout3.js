@@ -89,7 +89,7 @@ function blockCollision(){
         for(r = 0; r < blockRowCount; r++){		
             var brick = blocks[c][r];
             if(brick.active == 1){
-                if(x > brick.x && x < brick.x+blockWidth && y > brick.y && y < brick.y+blockHeight){
+                if(x > brick.x && x < brick.x+blockWidth && (y+(ballRadius/2) >= brick.y || y-(ballRadius/2) <= brick.y+blockHeight)){
                     dy=-dy;
                     brick.health -= 33;
                     if(brick.health <= 100 && brick.health > 66 ){
