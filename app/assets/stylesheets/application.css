@@ -40,15 +40,12 @@ body{
 	
 }
 
-title{
-	margin-top: 10px;
-	padding-top: 10px;
-}
-
 h1 {
+	display: inline-block;
 	margin-top: 10px;
 	padding-top: 10px;
-	font-size: 36px;
+	color: #FFFFFF;
+	font-size: 40px;
 }
 h2 {
 	font-size: 32px;
@@ -66,11 +63,47 @@ h6 {
 	font-size: 18px;
 }
 
-h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
+h2,h3,h4,h5,h6,.h2,.h3,.h4,.h5,.h6{
 	color: #3a3a3a;
 	font-weight: 700;
 	margin-bottom: 20px;
 	font-family: 'Montserrat', sans-serif;
+}
+
+p{
+	color: #FFFFFF;
+	font-size: 20px;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+.bottombar {
+	overflow: hidden;
+    background-color: #333;
+    position: fixed; /* Set the navbar to fixed position */
+    bottom: 0; /* Position the navbar at the bottom of the page */
+    width: 100%; /* Full width */
+}
+
+.bottombar a{
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.bottombar a:hover{
+	transform: scale(1.05, 1.05);
+    color: #FFFFFF;
+    background-color: #528e89;
 }
 
 canvas {
@@ -177,6 +210,15 @@ margin, padding
     cursor: pointer;
     color: #559aba;
     background-color: white;
+}
+
+#signin{
+	float: right;
+	display: inline-block;
+}
+
+#breakoutImg {
+	width: 40%;
 }
 
 /* ================================

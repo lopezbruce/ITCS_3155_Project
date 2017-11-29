@@ -84,13 +84,39 @@ function drawBlocks() {
         }
     }
 }
+
+function RectCircleColliding(circle,rect){
+    var distX = Math.abs(circle.x - rect.x-rect.w/2);
+    var distY = Math.abs(circle.y - rect.y-rect.h/2);
+
+    if (distX > (rect.w/2 + circle.r)) { return false; }
+    if (distY > (rect.h/2 + circle.r)) { return false; }
+
+    if (distX <= (rect.w/2)) { return true; } 
+    if (distY <= (rect.h/2)) { return true; }
+
+    var dx=distX-rect.w/2;
+    var dy=distY-rect.h/2;
+    return (dx*dx+dy*dy<=(circle.r*circle.r));
+}
+
 function blockCollision(){
     for(c = 0; c < blockColumnCount; c++){
         for(r = 0; r < blockRowCount; r++){		
             var brick = blocks[c][r];
+            var circle={x:x,y:y,r:10};
+
             if(brick.active == 1){
-                if(x > brick.x && x < brick.x+blockWidth && (y+(ballRadius/2) >= brick.y || y-(ballRadius/2) <= brick.y+blockHeight)){
-                    dy=-dy;
+                var rect={x:brick.x,y:brick.y,w:blockWidth,h:blockHeight};
+                if (RectCircleColliding(circle, rect)){
+               /*if(x > brick.x && x < brick.x+blockWidth && y > brick.y && y < brick.y+blockHeight){ changed to better collision detection*/
+                    if (y>=brick.y && y<=brick.y+blockHeight)
+                    {
+                        dx=-dx;
+                    }
+                    else{
+                        dy=-dy;
+                    }
                     brick.health -= 33;
                     if(brick.health <= 100 && brick.health > 66 ){
                         brick.color = "#dd0024";

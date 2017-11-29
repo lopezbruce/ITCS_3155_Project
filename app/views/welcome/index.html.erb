@@ -8,27 +8,33 @@
 <body>
   <!-- intro area -->
   <div id="intro">
-    <div style="float:right">
-      <%= button_to 'Sign in', '/login', :method => 'get', :id => 'signin' %>
+    <div class = navbar>
+      <div closs="container">
+      <div class="row">
+        <%= button_to 'Sign in', '/login', :method => 'get', :id => 'signin' %>
+        <h1 style="float:center">Welcome to © Games!</h1>
+      </div>
     </div>
-    <h1 style="float:center">
-        Welcome to © Games!
-      </h1>
+    </div>
     <div class="intro-text">
       <div class="container">
         <div class="row">
-
-
+            <%= image_tag("breakout.png", :id => 'breakoutImg', :style => 'float:left') %>
+            <p><br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> Breakout! Try to destroy all of the blocks and get the highest score possible!</p>
           <div class="col-md-12">
 
             <div class="brand">
               <!--div class="line-spacer"></div> -->
-              <%= button_to 'GAME', games_path, :method => 'get', :id => 'gameButton' %>
+              <%= button_to 'PLAY NOW', games_path, :method => 'get', :id => 'gameButton' %>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+  </div>
+  <div class = bottombar style="float: right">
+    <%= link_to 'About Us', '/login', :method => 'get', :id => 'about' %>
+    <%= link_to 'Privacy Policy', '/login', :method => 'get', :id => 'privacyPolicy' %>
   </div>
 </body>

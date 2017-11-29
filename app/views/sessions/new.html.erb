@@ -1,3 +1,10 @@
+<head>
+  <meta charset = "utf-8" />
+  <style>
+  * {padding: 0; margin: 0; }
+  </style>
+  <%= stylesheet_link_tag "/app/assets/stylesheets/application.css" %>
+</head>
 <h1>Login</h1>
 <%= form_for(:session, url: login_path) do |f| %>
 
@@ -11,3 +18,8 @@
     <% end %>
 
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    
+  <div class = bottombar style="float: right">
+    <%= link_to 'About Us', '/login', :method => 'get', :id => 'about' %>
+    <%= link_to 'Privacy Policy', '/login', :method => 'get', :id => 'privacyPolicy' %>
+  </div>
