@@ -8,23 +8,22 @@ end
 
 #save score 
 def save_score
-  puts "hi"
+    @user=User.create(:username => "wtfisgoingon", :email => "wtf@email.com", :password => "123456", :password_confirmation => "123456")
+    @user.save
     new_score = params[:score]
     @values = TargetArea.where(:score => new_score)
     respond_to do |format|
-        breakout3.js { render 'save_score' } #make_a_change.js.erb
+        format.js { render 'save_score' } #make_a_change.js.erb
     end
     
     current_user.stats.create(:score => new_score, :name => "please work")
 end
     
 def index
-  puts "hi"
 @user=User.all
 end
 
 def create
-  puts "hi"
   @user = User.new(user_params)
   if @user.save
     log_in @user

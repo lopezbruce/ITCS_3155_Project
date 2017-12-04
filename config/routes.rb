@@ -25,6 +25,6 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
   
   # Delete if it doesn't work
-  post 'users_controller/save_score', to: 'users_controller#save_score'
+  post '/users/save_score' => 'users#save_score'
 
 end

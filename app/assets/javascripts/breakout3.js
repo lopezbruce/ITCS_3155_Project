@@ -136,8 +136,7 @@ function blockCollision(){
                     else{
                         dy=-dy;
                     }
-                    //brick.health -= 33;
-                    brick.health -= 100;
+                    brick.health -= 33;
                     if(brick.health <= 100 && brick.health > 66 ){
                         brick.color = "#dd0024";
                     }else if(brick.health <= 66 && brick.health > 33){
@@ -185,7 +184,8 @@ function draw(){
             alert("GAME OVER");
             alert("Score: " + score.toString());
             $.ajax({
-        url: "/users_controller/save_score",
+        type: "POST",
+        url: "/users/save_score",
         data:(
             'score=' + $('score').val()
         ),
