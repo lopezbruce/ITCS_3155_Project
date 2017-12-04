@@ -2,10 +2,19 @@ class StatsController < ApplicationController
     def new
         @stat=Stat.new
     end
-    
+    #save score 
+    def save_score
+        score = params[:score]
+        @values = TargetArea.where(:score => score)
+        respond_to do |format|
+            breakout3.js { render 'save_score' } #make_a_change.js.erb
+        end
+    end
+    #index
     def index
         @stats=Stat.all
     end
+    
 =begin
     def create
         @stat = Stat.new(stat_params)

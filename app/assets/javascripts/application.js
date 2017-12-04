@@ -15,5 +15,7 @@
 //= require breakout1.js
 //= require breakout2.js
 //= require breakout3.js
+//= require breakout3BACKUP.js
+//= require jquery_ujs
 //= require_tree .
 

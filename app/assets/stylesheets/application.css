@@ -37,6 +37,7 @@ body{
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 	line-height: 1.6em;
+	overflow:hidden; /*Removes scroll*/
 	
 }
 
@@ -81,6 +82,8 @@ p{
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
+    opacity: 70%;
+    z-index: 1;
 }
 
 .bottombar {
@@ -89,6 +92,7 @@ p{
     position: fixed; /* Set the navbar to fixed position */
     bottom: 0; /* Position the navbar at the bottom of the page */
     width: 100%; /* Full width */
+    z-index: 100;
 }
 
 .bottombar a{
@@ -109,7 +113,7 @@ p{
 canvas {
 	background: #eee; 
 	display: block; 
-	margin: 0 auto; 
+	margin: 0 auto;
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
@@ -218,7 +222,11 @@ margin, padding
 }
 
 #breakoutImg {
-	width: 40%;
+	width: 35%
+}
+
+#logo {
+	width: 3.5%;
 }
 
 /* ================================

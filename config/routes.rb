@@ -23,5 +23,8 @@ Rails.application.routes.draw do
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+  
+  # Delete if it doesn't work
+  post 'stats_controller/save_score', to: 'stats_controller#save_score'
 
 end

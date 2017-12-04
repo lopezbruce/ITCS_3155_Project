@@ -18,10 +18,9 @@ var blockOffsetLeft = 10;
 var blockRowCount = 5;
 var blockColumnCount = Math.ceil((canvas.width - 100)/blockWidth);
 var score = 0;
-var won = 0;
-var myVar;
+var time = 0;
 
-//document.getElementById("postButton").disabled = true;
+
 ctx.font = "24px Arial";
 ctx.fillStyle = "#0095DD";
 ctx.fillText("BREAKOUT!", 200, 200);
@@ -34,38 +33,16 @@ for(c=0; c<blockColumnCount; c++) {
     }
 }
 
-function postHandler(){
-    alert("Yeah you cliked me congrats");
-    
-        alert("Hey, you pressed my button");
-        $.ajax({
-        url: "/games",
-        type: "POST",
-        dataType: "application/json; charset=utf-8",
-        data: score,
-        success: function(data) {
-            console.log('success',data);
-       },
-        error: function(exception){alert("WHat");}
-        });
-
-}
-
 function clickHandler(){
     document.getElementById("startButton").disabled = true;
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    myVar = setInterval(draw,10);
+    setInterval(draw,9);
 }
 function keyDownHandler(k){
     if(k.keyCode == 39)  {
         rightPressed = true;
     }else if(k.keyCode == 37){
         leftPressed = true;
-    }else if(k.keyCode == 87){
-        for(c in blocks){
-            c.health = 0;
-            score = (blockRowCount * blockColumnCount);
-        }
     }
 }
 function keyUpHandler(k){
@@ -75,8 +52,6 @@ function keyUpHandler(k){
         leftPressed = false;
     }
 }
-
-
 function drawPaddle(){
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight-10, paddleWidth, paddleHeight); 
@@ -142,25 +117,25 @@ function blockCollision(){
                     else{
                         dy=-dy;
                     }
-                    //brick.health -= 33;
-                    brick.health -= 100;
+                    brick.health -= 33;
                     if(brick.health <= 100 && brick.health > 66 ){
                         brick.color = "#dd0024";
+                        break;
                     }else if(brick.health <= 66 && brick.health > 33){
                         brick.color = "#00bc16";
+                        break;
                     }else if (brick.health <= 33){ 
                         brick.active = 0;
                         score++;
+                        break;
+                    }else{
+                        break;
                     }
                     
                 }if(score >= (blockColumnCount * blockRowCount)){
-                    //document.getElementById("postButton").disabled = false;
-                    clearInterval(myVar);
                     alert("YOU WON!");
-                    alert("Score: " + score.toString());
-                    canvas.clearRect(0,0,canvas.height, canvas.width);
-                    
-                    
+                    document.location.reload();
+                    return;
                 }
             }
         }
@@ -172,6 +147,7 @@ function drawScore(){
     ctx.fillText("Score: "+score, 8, 200);
 }
 function draw(){
+    time++;
     ctx.clearRect(0,0, canvas.width, canvas.height);
     drawBall();
     drawPaddle();
@@ -190,13 +166,7 @@ function draw(){
             document.location.reload();
             alert("GAME OVER");
             alert("Score: " + score.toString());
-            $.ajax({
-        url: "/stats_controller/save_score",
-        data:(
-            'score=' + $('score').val()
-        ),
-        error: function(exception){alert("What");}
-        });
+            
         }
     }
     if(rightPressed && paddleX < canvas.width-paddleWidth){
@@ -206,13 +176,13 @@ function draw(){
     }
     x += dx;
     y += dy;
-
 }
-
-
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
+
+
+
+
 document.getElementById("startButton").addEventListener("click", clickHandler,false);
-document.getElementById("postButton").addEventListener("click", postHandler, false);

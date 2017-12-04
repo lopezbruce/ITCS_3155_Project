@@ -12,7 +12,7 @@
       <div closs="container">
       <div class="row">
         <%= button_to 'Sign in', '/login', :method => 'get', :id => 'signin' %>
-        <h1 style="float:center">Welcome to © Games!</h1>
+        <h1 style="float:center">Welcome to <%= image_tag("logo.png", :id => 'logo') %> Games!</h1>
       </div>
     </div>
     </div>
@@ -20,7 +20,7 @@
       <div class="container">
         <div class="row">
             <%= image_tag("breakout.png", :id => 'breakoutImg', :style => 'float:left') %>
-            <p><br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> Breakout! Try to destroy all of the blocks and get the highest score possible!</p>
+            <p><br/><br/> <br /> <br /> <br /> Breakout! Try to destroy all of the blocks and get the highest score possible!</p>
           <div class="col-md-12">
 
             <div class="brand">
