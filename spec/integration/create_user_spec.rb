@@ -17,6 +17,6 @@ feature"user adds a stat" do
         fill_in "Email", with: "test@testing.com"
         fill_in "Password", with: "testing123"
         click_button "Log in"
-        #expect(page).to have_field("text")
+        expect(page).to have_field("text")
     end
 end
