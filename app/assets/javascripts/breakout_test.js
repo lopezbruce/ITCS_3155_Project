@@ -1,3 +1,4 @@
+<%= include_gon %>
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;
@@ -35,14 +36,20 @@ for(c=0; c<blockColumnCount; c++) {
 }
 
 function postHandler(){
-    alert("Yeah you cliked me congrats");
-    $.ajax({
-    url: '/controllers/game_controller',
-    type: 'post',
-    data: {data_value: JSON.stringify(score)}
-  });
+    alert("Yeah you clicked me congrats");
     
-    alert("Sent " + posts.length + " posts");
+        alert("Hey, you pressed my button");
+        $.ajax({
+        url: "/games",
+        type: "POST",
+        dataType: "application/json; charset=utf-8",
+        data: score,
+        success: function(data) {
+            console.log('success',data);
+       },
+        error: function(exception){alert("What");}
+        });
+
 }
 
 function clickHandler(){
@@ -185,7 +192,7 @@ function draw(){
             alert("GAME OVER");
             alert("Score: " + score.toString());
             $.ajax({
-        url: "/users_controller/save_score",
+        url: "/stats_controller/save_score",
         data:(
             'score=' + $('score').val()
         ),
