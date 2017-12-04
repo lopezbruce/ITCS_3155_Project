@@ -14,3 +14,4 @@ Scenario: As a new user I want to be able to navigate from the homepage to the s
   And I should see the "Email" field
   And I should see the "Password" field
   And I should see the "Confirmation" field
+  
