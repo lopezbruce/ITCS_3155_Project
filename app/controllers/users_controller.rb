@@ -12,7 +12,7 @@ end
 #Save Score
 def save_score
   new_score = params[:newScore]
-  current_user.stats.create(:score => new_score, :name => "PLEASE!!!!")
+  @stat=current_user.stats.create(:score => new_score, :name => "s")
 end
     
 def index
@@ -24,7 +24,7 @@ def create
   if @user.save
     log_in @user
     session[:user_id] = @user.id
-    redirect_to '/'
+    redirect_to '/welcome/index'
   else
     render 'new'
   end

@@ -181,7 +181,7 @@ function popupHandler(a, r,s){
         alert(a.toString());
         alert("Score: " + s.toString());
         jQuery.ajax({
-                    type: "POST",
+                    type: "post",
                     url: "/users/save_score",
                     dataType: "text",
                     data: {newScore: s.toString()},

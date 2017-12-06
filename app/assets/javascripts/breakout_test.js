@@ -1,4 +1,8 @@
-<%= include_gon %>
+//= require jquery
+//= require jquery_ujs
+//import Rails from 'rails.ujs';
+//Rails.start();
+
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;
@@ -21,6 +25,7 @@ var blockColumnCount = Math.ceil((canvas.width - 100)/blockWidth);
 var score = 0;
 var won = 0;
 var myVar;
+var repeat = true;
 
 //document.getElementById("postButton").disabled = true;
 ctx.font = "24px Arial";
@@ -36,20 +41,14 @@ for(c=0; c<blockColumnCount; c++) {
 }
 
 function postHandler(){
-    alert("Yeah you clicked me congrats");
+    alert("Yeah you cliked me congrats");
+    $.ajax({
+    url: '/controllers/game_controller',
+    type: 'patch',
+    data: {data_value: JSON.stringify(score)}
+  });
     
-        alert("Hey, you pressed my button");
-        $.ajax({
-        url: "/games",
-        type: "POST",
-        dataType: "application/json; charset=utf-8",
-        data: score,
-        success: function(data) {
-            console.log('success',data);
-       },
-        error: function(exception){alert("What");}
-        });
-
+    alert("Sent " + posts.length + " posts");
 }
 
 function clickHandler(){
@@ -67,6 +66,7 @@ function keyDownHandler(k){
             c.health = 0;
             score = (blockRowCount * blockColumnCount);
         }
+        repeat = true;
     }
 }
 function keyUpHandler(k){
@@ -143,8 +143,8 @@ function blockCollision(){
                     else{
                         dy=-dy;
                     }
-                    //brick.health -= 33;
                     brick.health -= 100;
+                    //brick.health -= 33;
                     if(brick.health <= 100 && brick.health > 66 ){
                         brick.color = "#dd0024";
                     }else if(brick.health <= 66 && brick.health > 33){
@@ -156,12 +156,13 @@ function blockCollision(){
                     
                 }if(score >= (blockColumnCount * blockRowCount)){
                     //document.getElementById("postButton").disabled = false;
-                    clearInterval(myVar);
-                    alert("YOU WON!");
-                    alert("Score: " + score.toString());
-                    canvas.clearRect(0,0,canvas.height, canvas.width);
-                    
-                    
+                    if(repeat == true){
+                        clearInterval(myVar);
+                        repeat = popupHandler("You Won!", true, score);
+                        canvas.clearRect(0,0,canvas.height, canvas.width);
+                    }else{
+                        alert("An unexpected error was encountered");
+                    }
                 }
             }
         }
@@ -171,6 +172,24 @@ function drawScore(){
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Score: "+score, 8, 200);
+}
+function popupHandler(a, r,s){
+    if(r == false){
+        alert("Error");
+        return true;
+    }else{
+        alert(a.toString());
+        alert("Score: " + s.toString());
+        jQuery.ajax({
+                    type: 'patch',
+                    url: "/users/save_score",
+                    dataType: "html",
+                    data: {newScore: s},
+                    success: function(exception){alert("Score successfully went through!");}, 
+                    error: function(exception){alert("Score encountered error");}
+                    });
+        return false;
+    }
 }
 function draw(){
     ctx.clearRect(0,0, canvas.width, canvas.height);
@@ -188,16 +207,10 @@ function draw(){
             dy = -dy;
         }
         else if(y + dy > canvas.height){
-            document.location.reload();
-            alert("GAME OVER");
-            alert("Score: " + score.toString());
-            $.ajax({
-        url: "/stats_controller/save_score",
-        data:(
-            'score=' + $('score').val()
-        ),
-        error: function(exception){alert("What");}
-        });
+            if(repeat == true){
+                repeat = popupHandler("Game Over", repeat, score);;
+                document.location.reload();
+            }
         }
     }
     if(rightPressed && paddleX < canvas.width-paddleWidth){
@@ -209,6 +222,7 @@ function draw(){
     y += dy;
 
 }
+
 
 
 

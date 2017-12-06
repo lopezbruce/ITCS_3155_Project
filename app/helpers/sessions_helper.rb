@@ -1,6 +1,7 @@
 module SessionsHelper
   def log_in(user)
     session[:user_id] = user.id
+    redirect_to '/welcome/index'
   end
   
   def log_out

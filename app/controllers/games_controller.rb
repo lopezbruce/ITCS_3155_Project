@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   def index
+    @breakoutVersion
   end
   
   def new

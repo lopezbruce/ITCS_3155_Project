@@ -21,11 +21,13 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/back' => 'welcome#index'
+  get '/breakout1' => 'games#breakout1'
+  get '/breakout2' => 'games#breakout2'
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   
   # Delete if it doesn't work
-  post '/users/save_score', to: 'users#save_score'
+  post '/users/save_score' => 'users#save_score'
 
 end

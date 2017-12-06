@@ -26,7 +26,10 @@
 
             <div class="brand">
               <!--div class="line-spacer"></div> -->
-              <%= button_to 'PLAY NOW', games_path, :method => 'get', :id => 'gameButton' %>
+              
+              <%= button_to 'EASY', '/breakout1', :method => 'get', :id => 'gameButton'%>
+              <%= button_to 'MEDIUM', '/breakout2', :method => 'get', :id => 'gameButton' %>
+              <%= button_to 'HARD', games_path, :method => 'get', :id => 'gameButton' %>
             </div>
           </div>
         </div>
