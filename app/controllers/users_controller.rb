@@ -2,21 +2,17 @@ class UsersController < ApplicationController
 
 # app/controllers/users_controller.rb
 
+
+
+
 def new
   @user=User.new
 end
 
-#save score 
+#Save Score
 def save_score
-    @user=User.create(:username => "wtfisgoingon", :email => "wtf@email.com", :password => "123456", :password_confirmation => "123456")
-    @user.save
-    new_score = params[:score]
-    @values = TargetArea.where(:score => new_score)
-    respond_to do |format|
-        format.js { render 'save_score' } #make_a_change.js.erb
-    end
-    
-    current_user.stats.create(:score => new_score, :name => "please work")
+  new_score = params[:newScore]
+  current_user.stats.create(:score => new_score, :name => "PLEASE!!!!")
 end
     
 def index
