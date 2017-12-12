@@ -19,12 +19,14 @@
   <tr>
     <th>Score</th>
     <th>Difficulty</th>
+    <th>Date</th>
   </tr>
 
 <% @user.stats.each do |stat| %>
 <tr>
      <td><%= stat.score %></td>
      <td><%= stat.name %></td>
+     <td><%= stat.date.strftime("%d/%m/%Y %H:%M") %></td>
      <td><%= link_to 'Show', user_stat_path(@user,stat) %> </td>
      <td><%= button_to 'Destroy', user_stat_path(@user, stat),
                                 method: :delete,
