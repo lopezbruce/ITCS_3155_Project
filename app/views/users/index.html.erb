@@ -1,5 +1,9 @@
 <h1>User#index</h1>
 
+<% if current_user != "Bruce" %>
+  <% redirect_to root_path %>
+<% else %>
+
 
  <table>
   <tr>
@@ -25,7 +29,7 @@
 <%= link_to 'New', new_user_path %>
  
  
- 
+<% end %>
  
  
  
