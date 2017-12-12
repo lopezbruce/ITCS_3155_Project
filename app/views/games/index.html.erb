@@ -19,7 +19,7 @@
             <div >
                 <div style="float:right;">
                     <% if logged_in? %>
-                    <%= button_to current_user.username, current_user%> 
+                   <p style="padding:10px;"> hello, <%=current_user.username%></p>
                     <% else %>
                     
                     <% end %>

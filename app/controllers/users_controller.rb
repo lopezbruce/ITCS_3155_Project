@@ -15,7 +15,8 @@ end
 #Save Score
 def save_score
   new_score = params[:newScore]
-  @stat=current_user.stats.create(:score => new_score, :name => "s")
+  difficulty=params[:difficulty]
+  @stat=current_user.stats.create(:score => new_score, :name => difficulty)
 
 end
     

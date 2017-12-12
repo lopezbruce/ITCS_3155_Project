@@ -15,14 +15,24 @@
   <%= @user.username %>
 </p>
 
+<table>
+  <tr>
+    <th>Score</th>
+    <th>Difficulty</th>
+  </tr>
+
 <% @user.stats.each do |stat| %>
-<p>
-  <strong>Score:</strong>
-  <%= stat.score %>
-  <strong>Name:</strong>
-  <%= stat.name %>
-</p>
+<tr>
+     <td><%= stat.score %></td>
+     <td><%= stat.name %></td>
+     <td><%= link_to 'Show', user_stat_path(@user,stat) %> </td>
+     <td><%= link_to 'Destroy', user_stat_path(@user, stat),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' } %></td>
+     
+    </tr>
 <% end %>
+</table
 
 <h2>Add a stat:</h2>
 <%= form_for([@user, @user.stats.new]) do |f| %>

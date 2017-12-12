@@ -9,10 +9,10 @@
      <td><%= stat.score %></td>
      <td><%= stat.name %></td>
      
-     <td><%= link_to 'Show', stat_path(stat) %></td>
-     <td><%= link_to 'Edit', edit_stat_path(stat) %></td>
+     <td><%= link_to 'Show', user_stat_path(stat) %></td>
+     <td><%= link_to 'Edit', edit_user_stat_path(stat) %></td>
      <td><%= link_to 'Destroy',
-                                stat_path(stat),
+                                user_stat_path(stat),
                                 method: :delete,
                                 data: { confirm: 'Are you sure?' } %></td>
      

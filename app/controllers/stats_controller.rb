@@ -25,7 +25,8 @@ class StatsController < ApplicationController
         redirect_to user_path(@user)
     end
     def show
-        @stat=Stat.find(params[:id])
+        @user=User.find(params[:user_id])
+        @stat=@user.stats.find(params[:id])
     end
     
     def edit
@@ -42,9 +43,10 @@ class StatsController < ApplicationController
     end
     
     def destroy
-        @stat = Stat.find(params[:id])
+        @user=User.find(params[:user_id])
+        @stat = @user.stats.find(params[:id])
         @stat.destroy
-        redirect_to stats_path
+        redirect_to :back
     end
 =begin
 
