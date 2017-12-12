@@ -26,7 +26,7 @@
      <td><%= stat.score %></td>
      <td><%= stat.name %></td>
      <td><%= link_to 'Show', user_stat_path(@user,stat) %> </td>
-     <td><%= link_to 'Destroy', user_stat_path(@user, stat),
+     <td><%= button_to 'Destroy', user_stat_path(@user, stat),
                                 method: :delete,
                                 data: { confirm: 'Are you sure?' } %></td>
      

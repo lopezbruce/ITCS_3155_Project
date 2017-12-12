@@ -46,7 +46,7 @@ class StatsController < ApplicationController
         @user=User.find(params[:user_id])
         @stat = @user.stats.find(params[:id])
         @stat.destroy
-        redirect_to :back
+        redirect_to @user
     end
 =begin
 

@@ -12,6 +12,7 @@
 //
 //= require jquery_ujs
 //= require jquery3
+//= require rails-ujs
 //= require turbolinks
 //= require breakout1.js
 //= require breakout2.js
