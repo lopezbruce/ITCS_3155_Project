@@ -24,12 +24,13 @@ Imports
 @import url('overwrite.css');
 @import url('dlmenu.css');
 @import url('animate.css');
+@import 'bootstrap';
 
 /* ================================
 General
 ================================= */
 body{
-	height: 100%;
+	width: 100%;
 	background: #529abb;
 	margin:0;
 	padding:0;
@@ -202,7 +203,7 @@ margin, padding
 	margin-top: 40px;
 }
 
-#gameButton, #startButton, #signin{
+#gameButton, #startButton, #signin, #buttons{
 	margin: 10px;
 	padding: 6px, 12px;
 	background-color: transparent;
@@ -226,12 +227,29 @@ margin, padding
 	user-select: none;
 }
 
-#gameButton:hover, #startButton:hover, #signin:hover, #back:hover{
+#gameButton:hover, #startButton:hover, #signin:hover, #back:hover, #buttons:hover{
 	transform: scale(1.05, 1.05);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     cursor: pointer;
     color: #559aba;
     background-color: white;
+}
+
+#textFields, input.username{
+	height: 30pt;
+	font-size: 30pt;
+	width: 240pt;
+	border-color: white;
+	border-width: 1pt;
+	background-color: transparent;
+	color: white;
+	padding: 5px;
+}
+
+#textNames{
+	color: white;
+	font-size: 25pt;
+	padding: 10px;
 }
 
 #signin{
@@ -243,8 +261,19 @@ margin, padding
 	width: 35%
 }
 
-#logo {
+#logo, #logo2 {
 	width: 3.5%;
+}
+
+#logo2 {
+	float: right;
+}
+
+
+input[type="button"]:disabled{
+	background-color: #7a7a7a;
+	color: #ffffff;
+	
 }
 
 /* ================================
@@ -387,4 +416,14 @@ Intro
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+/* ==========
+	Edit user fields
+	========= */
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
 }

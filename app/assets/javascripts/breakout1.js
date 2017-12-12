@@ -180,10 +180,10 @@ function popupHandler(a, r,s){
         alert(a.toString());
         alert("Score: " + s.toString());
         jQuery.ajax({
-                    type: "PATCH",
+                    type: "post",
                     url: "/users/save_score",
-                    dataType: "html",
-                    data: {newScore: s},
+                    dataType: "text",
+                    data: {newScore: s.toString()},
                     success: function(exception){alert("Score successfully went through!");}, 
                     error: function(exception){alert("Score encountered error");}
                     });

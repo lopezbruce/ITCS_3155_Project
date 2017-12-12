@@ -6,7 +6,7 @@ Feature: Add a new user entry
   
 Scenario: As a new user I want to be able to navigate from the homepage to the signup form
   Given I am on the home page
-  When I click on the "Sign in" link
+  When I click on the "Users" link
   Then I should be on the "User#index" page
   When I click on the "New" link
   Then I should be on the "New User Signup!" page

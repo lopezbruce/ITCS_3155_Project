@@ -1,6 +1,7 @@
 <head>
     <title>Breakout!</title>
     <meta charset = "utf-8" />
+    
     <style>
         * {padding: 0; margin: 0; }
     </style>
@@ -9,24 +10,33 @@
    <!-- <link rel="stylesheet" type="text/css" href="/app/assets/stylesheets/welcome.css"> -->
 </head>
 <body>
-     <%= button_to "Back To Home", '/back', :method => 'get', :id => 'back'%>
-     <div class="intro-text">
+     
         
       <div class="container">
         <div class="row">
 
 
           <div class="col-md-12">
-
+            <div style="float:left;">
+               <%= button_to "🏠", '/back', :method => 'get', :id => 'back'%>
+            </div>
             <div class="brand">
-                <h1>Breakout!</h1>
-                <button id ="startButton" class = "btn" type = "button">START</button>
+                <h1>Breakout! Medium</h1>
+                <button style="float:right;" id ="startButton" class = "btn" type = "button">START</button>
                 
-                <canvas id= "myCanvas" width = "480" height = "320"></canvas>
+                <canvas id= "myCanvas" width = "601px" height = "400px"></canvas>
                 
                 <%= javascript_include_tag 'breakout2.js' %>
             </div>
           </div>
+          <br><br><br>
+          <div style="float:center;">
+          <% if logged_in? %>
+          <p>User: <%= link_to current_user.email, current_user%></p>
+          <%= current_user.username%>
+          <% else %>
+          <%= link_to "Log in", login_path %>
+        <% end %>
         </div>
     
     

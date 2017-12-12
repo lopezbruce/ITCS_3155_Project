@@ -3,7 +3,7 @@
   <style>
   * {padding: 0; margin: 0; }
   </style>
-  <%= stylesheet_link_tag "/app/assets/stylesheets/application.css" %>
+  <%= stylesheet_link_tag "/app/assets/stylesheets/application.scss" %>
   
 </head>
 <body>
@@ -11,9 +11,20 @@
   <div id="intro">
     <div class = navbar>
       <div closs="container">
-      <div class="row">
-        <%= button_to 'Sign in', '/login', :method => 'get', :id => 'signin' %>
-        <h1 style="float:center">Welcome to <%= image_tag("logo.png", :id => 'logo') %> Games!</h1>
+      <div>
+        <% if logged_in? %>
+              <%= button_to 'Sign out', '/logout', :method => 'get', :id => 'signin' %>
+        <% else %>
+          <%= button_to 'Sign in', '/login', :method => 'get', :id => 'signin' %>
+        <% end %>
+        <h1 style="float:center">Welcome
+        <% if logged_in? %>
+          <%= current_user.username%>
+          <% else %>
+           
+        <% end %>
+        to <%= image_tag("logo.png", :id => 'logo') %> Games!</h1>
+        
       </div>
     </div>
     </div>
@@ -21,12 +32,11 @@
       <div class="container">
         <div class="row">
             <%= image_tag("breakout.png", :id => 'breakoutImg', :style => 'float:left') %>
-            <p><br/><br/> <br /> <br /> <br /> Breakout! Try to destroy all of the blocks and get the highest score possible!</p>
-          <div class="col-md-12">
+            <p><br/><br/> <br /> <br /> Breakout! Try to destroy all of the blocks and get the highest score possible!</p>
+          <div>
 
-            <div class="brand">
+            <div>
               <!--div class="line-spacer"></div> -->
-              
               <%= button_to 'EASY', '/breakout1', :method => 'get', :id => 'gameButton'%>
               <%= button_to 'MEDIUM', '/breakout2', :method => 'get', :id => 'gameButton' %>
               <%= button_to 'HARD', games_path, :method => 'get', :id => 'gameButton' %>
@@ -40,6 +50,12 @@
   <div class = bottombar style="float: right">
     <%= link_to 'About Us', '/login', :method => 'get', :id => 'about' %>
     <%= link_to 'Privacy Policy', '/login', :method => 'get', :id => 'privacyPolicy' %>
-    <%= link_to 'Sign in', controller: 'users' %>
+    <%= link_to 'Users', controller: 'users' %>
+    <% if logged_in? %>
+           <%= link_to "Profile", current_user %>
+          <%= link_to "Log out", logout_path, method: :delete %>
+        <% else %>
+          <%= link_to "Log in", login_path %>
+        <% end %>
   </div>
 </body>

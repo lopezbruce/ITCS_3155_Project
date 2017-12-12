@@ -1,11 +1,15 @@
-<h1>Show User</h1>
 
+<% provide(:title, @user.username) %>
+<h1>
+  <%= gravatar_for @user %>
+  <%= @user.username %>
+</h1>
 
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
-  <strong>Password:</strong>
-  <%= @user.password %>
+  <strong>Username:</strong>
+  <%= @user.username %>
 </p>
 
 <% @user.stats.each do |stat| %>

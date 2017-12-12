@@ -1,19 +1,27 @@
+<head>
+  <meta charset = "utf-8" />
+  <style>
+  * {padding: 0; margin: 0; }
+  </style>
+  <%= stylesheet_link_tag "/app/assets/stylesheets/application.scss" %>
+  
+</head>
 
 <% if false %>
 <%= form_for @user do |f| %>
 
 <p>
     <%= f.label :username %><br>
-    <%= f.text_field :username, class: 'username' %>
+    <%= f.text_field :username, :class => 'username' %>
   </p>
  
   <p>
     <%= f.label :password %><br>
-    <%= f.password_field :password, class: 'password' %>
+    <%= f.password_field :password, class: 'password', :id => 'passwordBox' %>
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit "Submit", :id => 'buttons' %>
   </p>
  
 <% end %>
@@ -23,39 +31,28 @@
 
 <!-- app/views/users/new.html.erb -->
 
-<h1>Signup!</h1>
-
 
 
 <%= form_for :user, url: users_path do |f| %> 
 
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@user.errors.count, "error") %> prohibited
-        this account from from being saved:
-      </h2>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_messages' %>
 
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+  <%= f.label :username, :id => 'textNames' %>
   
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+  <%= f.text_field :username, class: 'form-control', :id => 'textFields' %>
+  <br />
+  <%= f.label :email, :id => 'textNames'  %>
   
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation, "Confirmation" %>
-  <%= f.password_field :password_confirmation %>
+  <%= f.email_field :email, class: 'form-control', :id => 'textFields' %>
+  <br />
+  <%= f.label :password, :id => 'textNames' %>
   
-  <%= f.submit "Submit" %>
+  <%= f.password_field :password, class: 'form-control', :id => 'textFields' %>
+  <br />
+  <%= f.label :password_confirmation, "Confirmation", :id => 'textNames' %>
+  <%= f.password_field :password_confirmation, class: 'form-control', :id => 'textFields' %>
+  <br />
+  <%= f.submit "Submit", :id => 'buttons' %>
 
 <% end %>
 

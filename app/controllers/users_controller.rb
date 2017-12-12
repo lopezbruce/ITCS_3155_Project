@@ -13,6 +13,7 @@ end
 def save_score
   new_score = params[:newScore]
   @stat=current_user.stats.create(:score => new_score, :name => "s")
+
 end
     
 def index
@@ -40,7 +41,7 @@ end
 
 def update
   @user=User.find(params[:id])
-  if @user.update(user_params)
+  if @user.update_attributes(user_params)
     redirect_to '/'
   else
     render 'edit'

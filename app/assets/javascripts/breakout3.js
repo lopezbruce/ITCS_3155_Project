@@ -20,17 +20,16 @@ var blockHeight = 20;
 var blockPadding = 5;
 var blockOffsetTop = 10;
 var blockOffsetLeft = 10;
-var blockRowCount = 5;
+var blockRowCount = 7;
 var blockColumnCount = Math.ceil((canvas.width - 100)/blockWidth);
 var score = 0;
-var won = 0;
 var myVar;
 var repeat = true;
 
 //document.getElementById("postButton").disabled = true;
 ctx.font = "24px Arial";
 ctx.fillStyle = "#0095DD";
-ctx.fillText("BREAKOUT!", 200, 200);
+ctx.fillText("BREAKOUT!", 200, 300);
 
 var blocks = [];
 for(c=0; c<blockColumnCount; c++) {
@@ -40,21 +39,11 @@ for(c=0; c<blockColumnCount; c++) {
     }
 }
 
-function postHandler(){
-    alert("Yeah you cliked me congrats");
-    $.ajax({
-    url: '/controllers/game_controller',
-    type: 'post',
-    data: {data_value: JSON.stringify(score)}
-  });
-    
-    alert("Sent " + posts.length + " posts");
-}
 
 function clickHandler(){
     document.getElementById("startButton").disabled = true;
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    myVar = setInterval(draw,10);
+    myVar = setInterval(draw,8);
 }
 function keyDownHandler(k){
     if(k.keyCode == 39)  {
@@ -76,7 +65,6 @@ function keyUpHandler(k){
         leftPressed = false;
     }
 }
-
 
 function drawPaddle(){
     ctx.beginPath();
@@ -143,14 +131,13 @@ function blockCollision(){
                     else{
                         dy=-dy;
                     }
-                    brick.health -= 100;
-                    //brick.health -= 33;
+                    brick.health -= 33;
                     if(brick.health <= 100 && brick.health > 66 ){
                         brick.color = "#dd0024";
                     }else if(brick.health <= 66 && brick.health > 33){
                         brick.color = "#00bc16";
                     }else if (brick.health <= 33){ 
-                        brick.active = 0;
+                        brickHealth(brick);
                         score++;
                     }
                     
@@ -167,6 +154,10 @@ function blockCollision(){
             }
         }
     }
+}
+function brickHealth(b){
+    b.active = 0;
+    return false;
 }
 function drawScore(){
     ctx.font = "16px Arial";
@@ -186,7 +177,7 @@ function popupHandler(a, r,s){
                     dataType: "text",
                     data: {newScore: s.toString()},
                     success: function(exception){alert("Score successfully went through!");}, 
-                    error: function(exception){alert("Score encountered error");}
+                    error: function(exception){alert("Unable to save score, please ensure you are logged in!");}
                     });
         return false;
     }
@@ -230,4 +221,4 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 document.getElementById("startButton").addEventListener("click", clickHandler,false);
-document.getElementById("postButton").addEventListener("click", postHandler, false);
+
