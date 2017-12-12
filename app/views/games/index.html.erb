@@ -17,7 +17,13 @@
                <%= button_to "🏠", '/back', :method => 'get', :id => 'back'%>
             </div>
             <div >
-                <button style="float:right;" id ="startButton" class = "btn" type = "button">START</button>
+                <div style="float:right;">
+                    <% if logged_in? %>
+                    <%= button_to current_user.username, current_user%> 
+                    <% else %>
+                    
+                    <% end %>
+                </div>
                 <h1 id="inner">Breakout!</h1>
           </div>
         </div>
@@ -25,7 +31,8 @@
      
         
       <div>
-        <br/><br/><br/><br/>
+        <br/><br/><br/>
+        <button id ="startButton" class = "btn" type = "button">START</button><br/>
           <div>
                 <canvas id= "myCanvas" width = "601px" height = "400px"></canvas>
                 
@@ -38,7 +45,7 @@
           <p>User: <%= link_to current_user.email, current_user%></p>
           <%= current_user.username%>
           <% else %>
-          <%= link_to "Log in", login_path %>
+          <%= button_to 'Sign in', '/login', :method => 'get', :id => 'signin' %>
         <% end %>
         </div>
     
