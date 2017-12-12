@@ -1,4 +1,7 @@
 
+<div style="float:left;">
+               <%= button_to "🏠", '/back', :method => 'get', :id => 'back'%>
+            </div>
 <% provide(:title, @user.username) %>
 <h1>
   <%= gravatar_for @user %>

@@ -1,19 +1,22 @@
-<div class = "container">
+<div>
 <div class = "navbar">
-          <div closs="container">
-          <div class="row">
-              <div style = 'float:left'><%= image_tag("logo.png", :id => 'logo2') %></div>
-            <h1 style="float:center">New User Signup!</h1>
+          <div>
+          <div style="float:left;">
+               <%= button_to "🏠", '/back', :method => 'get', :id => 'back'%>
+            </div>
+          <div>
+            <h1 id="inner">New User Signup!</h1>
           </div>
         </div>
         </div>
         </div>
-<div class = "container">
-<br />
-<br />
-<br />
+        <br>
+<div>
+<br/>
+<br/>
+
 <%= render 'form' %>
 
-<%= button_to 'Back', users_path, :id => 'buttons' %>
+<%= button_to "Back", '/login', :method => 'get', :id => 'back'%>
 
 </div>

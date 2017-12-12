@@ -7,6 +7,8 @@
   
 </head>
 
+
+<div id="inner">
 <% if false %>
 <%= form_for @user do |f| %>
 
@@ -53,7 +55,7 @@
   <%= f.password_field :password_confirmation, class: 'form-control', :id => 'textFields' %>
   <br />
   <%= f.submit "Submit", :id => 'buttons' %>
-
+</div>
 <% end %>
 
 

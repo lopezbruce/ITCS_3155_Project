@@ -9,28 +9,31 @@
 
    <!-- <link rel="stylesheet" type="text/css" href="/app/assets/stylesheets/welcome.css"> -->
 </head>
+
 <body>
-     
-        
-      <div class="container">
-        <div class="row">
-
-
-          <div class="col-md-12">
-            <div style="float:left;">
+    <div class = "navbar">
+          <div>
+          <div style="float:left;">
                <%= button_to "🏠", '/back', :method => 'get', :id => 'back'%>
             </div>
-            <div class="brand">
-                <h1>Breakout! Easy</h1>
+            <div >
                 <button style="float:right;" id ="startButton" class = "btn" type = "button">START</button>
-                
+                <h1 id="inner">Breakout!</h1>
+          </div>
+        </div>
+        </div>
+     
+        
+      <div>
+        <br/><br/><br/><br/>
+          <div>
                 <canvas id= "myCanvas" width = "601px" height = "400px"></canvas>
                 
                 <%= javascript_include_tag 'breakout1.js' %>
             </div>
           </div>
-          <br/><br/>
-          <div style="float:center;">
+          <br/>
+          <div id="inner">
           <% if logged_in? %>
           <p>User: <%= link_to current_user.email, current_user%></p>
           <%= current_user.username%>
@@ -38,7 +41,5 @@
           <%= link_to "Log in", login_path %>
         <% end %>
         </div>
-    
-    
     
 </body>

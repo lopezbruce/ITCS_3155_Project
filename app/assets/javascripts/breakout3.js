@@ -29,7 +29,7 @@ var repeat = true;
 //document.getElementById("postButton").disabled = true;
 ctx.font = "24px Arial";
 ctx.fillStyle = "#0095DD";
-ctx.fillText("BREAKOUT!", 200, 300);
+ctx.fillText("BREAKOUT! HARD", 200, 300);
 
 var blocks = [];
 for(c=0; c<blockColumnCount; c++) {

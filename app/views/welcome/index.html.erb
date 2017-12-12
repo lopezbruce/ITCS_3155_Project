@@ -10,14 +10,13 @@
   <!-- intro area -->
   <div id="intro">
     <div class = navbar>
-      <div closs="container">
       <div>
         <% if logged_in? %>
               <%= button_to 'Sign out', '/logout', :method => 'get', :id => 'signin' %>
         <% else %>
           <%= button_to 'Sign in', '/login', :method => 'get', :id => 'signin' %>
         <% end %>
-        <h1 style="float:center">Welcome
+        <h1 id="inner">Welcome
         <% if logged_in? %>
           <%= current_user.username%>
           <% else %>
@@ -25,12 +24,11 @@
         <% end %>
         to <%= image_tag("logo.png", :id => 'logo') %> Games!</h1>
         
-      </div>
     </div>
     </div>
     <div class="intro-text">
       <div class="container">
-        <div class="row">
+        <div>
             <%= image_tag("breakout.png", :id => 'breakoutImg', :style => 'float:left') %>
             <p><br/><br/> <br /> <br /> Breakout! Try to destroy all of the blocks and get the highest score possible!</p>
           <div>

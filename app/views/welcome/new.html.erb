@@ -6,6 +6,10 @@
   </style>
   <%= stylesheet_link_tag "/app/assets/stylesheets/application.css" %>
 </head>
+<div>
+  <div style="float:left;">
+               <%= button_to "🏠", '/back', :method => 'get', :id => 'back'%>
+            </div>
 <h1>Signup!</h1>
 
 
@@ -21,9 +25,11 @@
 
 <!-- app/views/sessions/new.html.erb -->
 
-<h1>Login</h1>
+<h1 >Login</h1>
+
 
 <%= form_tag '/login' do %>
+
 
   Email: <%= text_field_tag :email, "", class: 'username'%>
   Password: <%= password_field_tag :password, "", class: 'password'%>
@@ -35,3 +41,4 @@
 </div>
 
 <% end %>
+</div>
