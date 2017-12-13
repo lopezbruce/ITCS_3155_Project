@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-before_action :logged_in_user, only: [:edit, :update]
+before_action :logged_in_user, only: [:edit, :update, :index]
 before_action :correct_user, only: [:edit, :update]
-before_action :authorize_admin, only: :index
+before_action :authorize_admin, only: [:index, :edit]
 # app/controllers/users_controller.rb
 
 
@@ -16,7 +16,13 @@ end
 def save_score
   new_score = params[:newScore]
   difficulty=params[:difficulty]
-  @stat=current_user.stats.create(:score => new_score, :name => difficulty, :date => Time.now)
+  t=DateTime.now
+  dayOffset=1
+  if (t.hour>=17)
+    dayOffset=0
+  end
+  a=DateTime.new(t.year,t.month,t.day-dayOffset,t.hour+7,t.min)
+  @stat=current_user.stats.create(:score => new_score, :name => difficulty, :date => a)
 
 end
     
@@ -37,6 +43,7 @@ end
 
 def show
   @user=User.find(params[:id])
+  @user.stats.all.order(:score)
 end
 
 def edit
@@ -68,11 +75,18 @@ end
 
 def correct_user
   @user = User.find(params[:id])
-  redirect_to(root_url) unless @user == current_user
+  redirect_to(root_url) unless @user == current_user or admin?
+end
+
+def admin?
+  current_user.username=="admin" or current_user.username=="BruceBruce" or current_user.username=="cbratti"
 end
 
 def authorize_admin
-  redirect_to(root_url) unless current_user.username=="admin"
+  redirect_to(root_url) unless admin?
+end
+
+def highscores
 end
 
 private

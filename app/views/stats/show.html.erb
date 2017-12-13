@@ -17,8 +17,8 @@
 </p>
 </body>
 
-<%= link_to 'Destroy', user_stat_path(@user, @stat),
+<%= button_to 'Destroy', user_stat_path(@user, @stat),
                         method: :delete,
                         data: { confirm: 'Are you sure?' } %></td>
 
-<%= link_to 'User Profile', current_user %>
+<%= button_to 'Back', current_user %>

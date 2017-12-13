@@ -137,7 +137,7 @@ function blockCollision(){
                     }else if(brick.health <= 66 && brick.health > 33){
                         brick.color = "#00bc16";
                     }else if (brick.health <= 33){ 
-                        brickHealth(brick);
+                        brickHealth(brick, brick.health, brick.active);
                         score++;
                     }
                     
@@ -155,8 +155,12 @@ function blockCollision(){
         }
     }
 }
-function brickHealth(b){
-    b.active = 0;
+function brickHealth(b, h, a){
+    if(h > 33){
+        return false;
+    }else{
+        b.active = 0;
+    }
     return false;
 }
 function drawScore(){
@@ -176,7 +180,7 @@ function popupHandler(a, r,s){
                     url: "/users/save_score",
                     dataType: "text",
                     data: {newScore: s.toString(), difficulty: "Hard"},
-                    success: function(exception){alert("Score successfully went through!");}, 
+                    success: function(exception){}, 
                     error: function(exception){alert("Unable to save score, please ensure you are logged in!");}
                     });
         return false;

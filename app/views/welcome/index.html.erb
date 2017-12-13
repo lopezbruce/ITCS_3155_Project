@@ -3,6 +3,7 @@
   <style>
   * {padding: 0; margin: 0; }
   </style>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag "/app/assets/stylesheets/application.scss" %>
   
 </head>
@@ -48,10 +49,10 @@
   <div class = bottombar style="float: right">
     <%= link_to 'About Us', '/login', :method => 'get', :id => 'about' %>
     <%= link_to 'Privacy Policy', '/login', :method => 'get', :id => 'privacyPolicy' %>
-    <%= link_to 'Users', controller: 'users' %>
+    <%= link_to 'Highscore', highscores_path %>
     <% if logged_in? %>
            <%= link_to "Profile", current_user %>
-          <%= link_to "Log out", logout_path, method: :delete %>
+          <%= link_to "Log out", logout_path, method: :get %>
         <% else %>
           <%= link_to "Log in", login_path %>
         <% end %>

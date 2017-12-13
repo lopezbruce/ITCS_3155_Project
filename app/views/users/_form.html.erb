@@ -13,7 +13,7 @@
 <%= form_for @user do |f| %>
 
 <p>
-    <%= f.label :username %><br>
+    <%= f.label :username  %><br>
     <%= f.text_field :username, :class => 'username' %>
   </p>
  
@@ -38,21 +38,25 @@
 <%= form_for (@user) do |f| %> 
 
   <%= render 'shared/error_messages' %>
-
-  <%= f.label :username, :id => 'textNames' %>
-  
-  <%= f.text_field :username, class: 'form-control', :id => 'textFields' %>
+  <p>
+  <%= f.label :username %>
+  <%= f.text_field :username, class: 'form-control' %>
+  </p>
   <br />
-  <%= f.label :email, :id => 'textNames'  %>
-  
-  <%= f.email_field :email, class: 'form-control', :id => 'textFields' %>
+  <p>
+  <%= f.label :email  %>
+  <%= f.email_field :email, class: 'form-control' %>
+  </p>
   <br />
-  <%= f.label :password, :id => 'textNames' %>
-  
-  <%= f.password_field :password, class: 'form-control', :id => 'textFields' %>
+  <p>
+  <%= f.label :password %>
+  <%= f.password_field :password, class: 'form-control' %>
+  </p>
   <br />
-  <%= f.label :password_confirmation, "Confirmation", :id => 'textNames' %>
-  <%= f.password_field :password_confirmation, class: 'form-control', :id => 'textFields' %>
+  <p>
+  <%= f.label :password_confirmation, "Confirmation" %>
+  <%= f.password_field :password_confirmation, class: 'form-control' %>
+  </p>
   <br />
   <%= f.submit "Submit", :id => 'buttons' %>
 </div>
