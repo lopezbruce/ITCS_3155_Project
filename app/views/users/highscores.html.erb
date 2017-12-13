@@ -1,0 +1,71 @@
+<% @easy = Stat.where({name: "Easy"}).order(score: :desc) %>
+<% @medium = Stat.where({name: "Medium"}).order(score: :desc) %>
+<% @hard = Stat.where({name: "Hard"}).order(score: :desc) %>
+
+  <div style="float:left;">
+               <%= button_to "🏠", '/back', :method => 'get', :id => 'back'%>
+            </div>
+
+<br>
+<br>
+<br>
+
+<p>
+<strong>Easy Highscores</strong>
+</p>
+
+<table align="center">
+  <tr>
+    <th style="text-align: center">Score</th>
+    <th style="text-align: center">User</th>
+  </tr>
+  <% counter = 0 %>
+  <% @easy.each do |stat| %>
+  <% break if counter>=10 %>
+  <tr>
+      <td><%=stat.score%></td>
+      <td><%=stat.user.username %></td>
+  </tr>
+  <% counter+=1 %>
+<%end%>
+</table>
+
+<p>
+<strong>Medium Highscores</strong>
+</p>
+
+<table align="center">
+  <tr>
+    <th style="text-align: center">Score</th>
+    <th style="text-align: center">User</th>
+  </tr>
+  <% counter = 0 %>
+  <% @medium.each do |stat| %>
+  <% break if counter>=10 %>
+  <tr>
+      <td><%=stat.score%></td>
+      <td><%=stat.user.username %></td>
+  </tr>
+  <% counter+=1 %>
+<%end%>
+</table>
+
+<p>
+<strong>Hard Highscores</strong>
+</p>
+
+<table align="center">
+  <tr>
+    <th style="text-align: center">Score</th>
+    <th style="text-align: center">User</th>
+  </tr>
+  <% counter = 0 %>
+  <% @hard.each do |stat| %>
+  <% break if counter>=10 %>
+  <tr>
+      <td><%=stat.score%></td>
+      <td><%=stat.user.username %></td>
+  </tr>
+  <% counter+=1 %>
+<%end%>
+</table>

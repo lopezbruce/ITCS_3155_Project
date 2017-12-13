@@ -17,33 +17,36 @@
 
 
 <p>
-  <%= link_to 'Edit Profile', edit_user_path(@user) %>
+  <%= button_to 'Edit Profile', edit_user_path(@user), :method => 'get', :id => "userButton" %>
 </p>
 <p>
   <strong>Scores:</strong>
 </p>
+<div id = 'userPage'>
 
 <table align="center">
   <tr>
     <th>Score</th>
     <th style="padding:0 30px 0 30px;">Difficulty</th>
-    <th style="padding:0 30px 0 30px;">Date</th>
+    <th style="padding:0 30px 0 30px;">Date (MM/DD/YYYY HH:MM)</th>
   </tr>
 
-<% @user.stats.each do |stat| %>
+<% @user.stats.order(score: :desc).each do |stat| %>
 <tr>
      <td><%= stat.score %></td>
      <td><%= stat.name %></td>
-     <td><%= stat.date.strftime("%d/%m/%Y %H:%M") %></td>
-     <td style="padding:0 15px 0 15px;"><%= link_to 'Show', user_stat_path(@user,stat) %> </td>
+     <td><%= stat.date.strftime("%m/%d/%Y %H:%M") %></td>
+     <td style="padding:0 15px 0 15px;"><%= button_to 'Show', user_stat_path(@user,stat), :method => "get", :id => "userButton"%> </td>
      <td style="padding:0 15px 0 15px;"><%= button_to 'Destroy', user_stat_path(@user, stat),
                                 method: :delete,
-                                data: { confirm: 'Are you sure?' } %></td>
+                                data: { confirm: 'Are you sure?' },
+                                :id => "userButton"%></td>
      
     </tr>
 <% end %>
 </table
 
+<%= link_to 'Highscores', highscores_path %>
 <% if false %>
 <h2>Add a stat:</h2>
 <%= form_for([@user, @user.stats.new]) do |f| %>
@@ -60,3 +63,4 @@
   </p>
 <% end %>
 <% end %>
+</div>

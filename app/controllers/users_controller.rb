@@ -75,6 +75,10 @@ def authorize_admin
   redirect_to(root_url) unless current_user.username=="admin"
 end
 
+
+def highscores
+end
+
 private
 
 def user_params

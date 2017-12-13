@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   
-  
+  get '/highscores' => 'users#highscores'
   
   # Delete if it doesn't work
   post '/users/save_score' => 'users#save_score'
