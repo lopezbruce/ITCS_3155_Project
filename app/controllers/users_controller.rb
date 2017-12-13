@@ -14,9 +14,9 @@ end
 
 #Save Score
 def save_score
-  new_score = params[:newScore]
-  difficulty=params[:difficulty]
-  @stat=current_user.stats.create(:score => new_score, :name => difficulty, :date => Time.now)
+    new_score = params[:newScore]
+    difficulty=params[:difficulty]
+    @stat=current_user.stats.create(:score => new_score, :name => difficulty, :date => Time.now)
 
 end
     
@@ -68,11 +68,15 @@ end
 
 def correct_user
   @user = User.find(params[:id])
-  redirect_to(root_url) unless @user == current_user
+  redirect_to(root_url) unless @user == current_user or admin?
+end
+
+def admin?
+  current_user.username=="admin"
 end
 
 def authorize_admin
-  redirect_to(root_url) unless current_user.username=="admin"
+  redirect_to(root_url) unless admin?
 end
 
 

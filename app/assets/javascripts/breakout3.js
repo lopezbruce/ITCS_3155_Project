@@ -147,6 +147,7 @@ function blockCollision(){
                         clearInterval(myVar);
                         repeat = popupHandler("You Won!", true, score);
                         canvas.clearRect(0,0,canvas.height, canvas.width);
+                        document.reload();
                     }else{
                         alert("An unexpected error was encountered");
                     }
@@ -176,7 +177,7 @@ function popupHandler(a, r,s){
                     url: "/users/save_score",
                     dataType: "text",
                     data: {newScore: s.toString(), difficulty: "Hard"},
-                    success: function(exception){alert("Score successfully went through!");}, 
+                    success: function(exception){}, 
                     error: function(exception){alert("Unable to save score, please ensure you are logged in!");}
                     });
         return false;

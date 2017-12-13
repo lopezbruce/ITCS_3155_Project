@@ -26,16 +26,16 @@
 
 <table align="center">
   <tr>
-    <th>Score</th>
-    <th style="padding:0 30px 0 30px;">Difficulty</th>
-    <th style="padding:0 30px 0 30px;">Date (MM/DD/YYYY HH:MM)</th>
+    <th style="text-align:center;">Score</th>
+    <th style="text-align:center;">Difficulty</th>
+    <th style="text-align:center;">Date (MM/DD/YYYY HH:MM)</th>
   </tr>
 
 <% @user.stats.order(score: :desc).each do |stat| %>
 <tr>
-     <td><%= stat.score %></td>
-     <td><%= stat.name %></td>
-     <td><%= stat.date.strftime("%m/%d/%Y %H:%M") %></td>
+     <td style="text-align:center;"><%= stat.score %></td>
+     <td style="text-align:center;"><%= stat.name %></td>
+     <td style="text-align:center;"><%= stat.date.strftime("%m/%d/%Y %H:%M") %></td>
      <td style="padding:0 15px 0 15px;"><%= button_to 'Show', user_stat_path(@user,stat), :method => "get", :id => "userButton"%> </td>
      <td style="padding:0 15px 0 15px;"><%= button_to 'Destroy', user_stat_path(@user, stat),
                                 method: :delete,

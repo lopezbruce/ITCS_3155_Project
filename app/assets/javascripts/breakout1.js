@@ -40,16 +40,7 @@ for(c=0; c<blockColumnCount; c++) {
     }
 }
 
-function postHandler(){
-    alert("Yeah you cliked me congrats");
-    $.ajax({
-    url: '/controllers/game_controller',
-    type: 'post',
-    data: {data_value: JSON.stringify(score)}
-  });
-    
-    alert("Sent " + posts.length + " posts");
-}
+
 
 function clickHandler(){
     document.getElementById("startButton").disabled = true;
@@ -159,6 +150,7 @@ function blockCollision(){
                         clearInterval(myVar);
                         repeat = popupHandler("You Won!", true, score);
                         canvas.clearRect(0,0,canvas.height, canvas.width);
+                        document.reload();
                     }else{
                         alert("An unexpected error was encountered");
                     }
@@ -185,7 +177,7 @@ function popupHandler(a, r,s){
                     dataType: "text",
                     data: {newScore: s.toString(), difficulty: "Easy"},
                     success: function(exception){}, 
-                    error: function(exception){alert("Score encountered error");}
+                    error: function(exception){alert("Unable to save score, please ensure you are logged in!");}
                     });
         return false;
     }
@@ -229,4 +221,4 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 document.getElementById("startButton").addEventListener("click", clickHandler,false);
-document.getElementById("postButton").addEventListener("click", postHandler, false);
+

@@ -45,6 +45,7 @@
           <p>User: <%= link_to current_user.email, current_user%></p>
           <%= current_user.username%>
           <% else %>
+          <p>Score will not submit unless you are logged in!</p>
           <%= button_to 'Sign in', '/login', :method => 'get', :id => 'signin' %>
         <% end %>
         </div>

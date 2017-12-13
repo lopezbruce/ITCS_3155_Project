@@ -24,7 +24,11 @@
   <% break if counter>=10 %>
   <tr>
       <td style="text-align: center"><%=stat.score%></td>
+      <% if stat.user!=nil %>
       <td style="text-align: center"><%=stat.user.username %></td>
+      <% else %>
+      <td style="text-align: center">Guest</td>
+      <% end %>
   </tr>
   <% counter+=1 %>
 <%end%>
@@ -43,8 +47,12 @@
   <% @medium.each do |stat| %>
   <% break if counter>=10 %>
   <tr>
-      <td style="text-align: center"><%=stat.score%></td>
+      <td style="text-align: center"><%=stat.score %></td>
+      <% if stat.user!=nil %>
       <td style="text-align: center"><%=stat.user.username %></td>
+      <% else %>
+      <td style="text-align: center">Guest</td>
+      <% end %>
   </tr>
   <% counter+=1 %>
 <%end%>
@@ -64,7 +72,11 @@
   <% break if counter>=10 %>
   <tr>
       <td style="text-align: center"><%=stat.score%></td>
+      <% if stat.user!=nil %>
       <td style="text-align: center"><%=stat.user.username %></td>
+      <% else %>
+      <td style="text-align: center">Guest</td>
+      <% end %>
   </tr>
   <% counter+=1 %>
 <%end%>

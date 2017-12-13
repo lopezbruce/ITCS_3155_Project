@@ -260,6 +260,7 @@ margin, padding
 }
 
 #textFields, input.username{
+	float: middle;
 	height: 30pt;
 	font-size: 30pt;
 	width: 240pt;
@@ -453,6 +454,9 @@ Intro
 }
 
 #inner {
-  display: table;
-  margin: 0 auto;
+
+  margin: auto;
+}
+#signin{
+	margin: auto;
 }

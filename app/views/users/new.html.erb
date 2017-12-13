@@ -19,4 +19,15 @@
 
 <%= button_to "Back", '/login', :method => 'get', :id => 'back'%>
 
+<div class = bottombar style="float: right">
+    <%= link_to 'About Us', :method => 'get', :id => 'about' %>
+    <%= link_to 'Privacy Policy', :method => 'get', :id => 'privacyPolicy' %>
+    <% if logged_in? %>
+           <%= link_to "Profile", current_user %>
+          <%= link_to "Log out", logout_path, method: :delete %>
+        <% else %>
+          <%= link_to "Log in", login_path %>
+        <% end %>
+  </div>
+
 </div>
