@@ -21,3 +21,15 @@ end
 Then("I should see the {string} field") do |field_name|
   expect(page).to have_field(field_name)
 end
+
+Then("I fill in {string} with {string}") do |field, value|
+  fill_in(field, :with => value)
+end
+
+Then("I press {string}") do |option|
+  retval = (option == "Ok") ? "true" : "false"
+end
+
+When("I click on the {string} link") do |page_name|
+  click_link page_name
+end

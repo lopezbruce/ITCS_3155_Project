@@ -42,4 +42,4 @@ Scenario: As a new user I want to be able to navigate from the homepage to the g
   Then I should be on the "Breakout!" page
   When I click on the "🏠" button
   Then I should be on the "Welcome to Games!" page
-  
+    
