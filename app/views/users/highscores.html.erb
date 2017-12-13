@@ -23,8 +23,8 @@
   <% @easy.each do |stat| %>
   <% break if counter>=10 %>
   <tr>
-      <td><%=stat.score%></td>
-      <td><%=stat.user.username %></td>
+      <td style="text-align: center"><%=stat.score%></td>
+      <td style="text-align: center"><%=stat.user.username %></td>
   </tr>
   <% counter+=1 %>
 <%end%>
@@ -43,8 +43,8 @@
   <% @medium.each do |stat| %>
   <% break if counter>=10 %>
   <tr>
-      <td><%=stat.score%></td>
-      <td><%=stat.user.username %></td>
+      <td style="text-align: center"><%=stat.score%></td>
+      <td style="text-align: center"><%=stat.user.username %></td>
   </tr>
   <% counter+=1 %>
 <%end%>
@@ -63,8 +63,8 @@
   <% @hard.each do |stat| %>
   <% break if counter>=10 %>
   <tr>
-      <td><%=stat.score%></td>
-      <td><%=stat.user.username %></td>
+      <td style="text-align: center"><%=stat.score%></td>
+      <td style="text-align: center"><%=stat.user.username %></td>
   </tr>
   <% counter+=1 %>
 <%end%>

@@ -176,7 +176,7 @@ function popupHandler(a, r,s){
                     url: "/users/save_score",
                     dataType: "text",
                     data: {newScore: s.toString(), difficulty: "Medium"},
-                    success: function(exception){alert("Score successfully went through!");}, 
+                    success: function(exception){}, 
                     error: function(exception){alert("Score encountered error");}
                     });
         return false;
