@@ -72,7 +72,7 @@ def correct_user
 end
 
 def authorize_admin
-  redirect_to(root_url) unless current_user=="Bruce"
+  redirect_to(root_url) unless current_user.username=="admin"
 end
 
 private

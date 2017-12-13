@@ -15,11 +15,19 @@
   <%= @user.username %>
 </p>
 
-<table>
+
+<p>
+  <%= link_to 'Edit Profile', edit_user_path(@user) %>
+</p>
+<p>
+  <strong>Scores:</strong>
+</p>
+
+<table align="center">
   <tr>
     <th>Score</th>
-    <th>Difficulty</th>
-    <th>Date</th>
+    <th style="padding:0 30px 0 30px;">Difficulty</th>
+    <th style="padding:0 30px 0 30px;">Date</th>
   </tr>
 
 <% @user.stats.each do |stat| %>
@@ -27,8 +35,8 @@
      <td><%= stat.score %></td>
      <td><%= stat.name %></td>
      <td><%= stat.date.strftime("%d/%m/%Y %H:%M") %></td>
-     <td><%= link_to 'Show', user_stat_path(@user,stat) %> </td>
-     <td><%= button_to 'Destroy', user_stat_path(@user, stat),
+     <td style="padding:0 15px 0 15px;"><%= link_to 'Show', user_stat_path(@user,stat) %> </td>
+     <td style="padding:0 15px 0 15px;"><%= button_to 'Destroy', user_stat_path(@user, stat),
                                 method: :delete,
                                 data: { confirm: 'Are you sure?' } %></td>
      
@@ -36,6 +44,7 @@
 <% end %>
 </table
 
+<% if false %>
 <h2>Add a stat:</h2>
 <%= form_for([@user, @user.stats.new]) do |f| %>
   <p>
@@ -49,4 +58,5 @@
   <p>
     <%= f.submit %>
   </p>
+<% end %>
 <% end %>
